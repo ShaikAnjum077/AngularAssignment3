@@ -1,0 +1,16 @@
+
+<div class="search">
+    <input #search>
+    <button (click)="typeCheck(search.value)">Check For Title</button>
+    <h4 class="success" *ngIf="searchFlag">Title found</h4>
+    <h4 class="fail" *ngIf="!searchFlag">Title not found</h4>
+  </div>
+  
+  <app-content-card *ngFor="let card of (content | filter);"
+      [card]="card" class="notype" [class.found]="card.type == search.value"></app-content-card>
+  
+  <app-content-card *ngFor="let card of (content | filter: 'tech');"
+                    [card]="card" class="tech" [class.found]="card.type == search.value"></app-content-card>
+  
+  <app-content-card *ngFor="let card of (content | filter: 'nontech');"
+                    [card]="card" class="nontech" [class.found]="card.type == search.value"></app-content-card>
